@@ -23,4 +23,5 @@ Identify Entities:
 3. Parking Level -> get_available_spot(), get_available_spots()
 4. Parking Spot -> is_available(), park(), unpark()
 5. Ticket -> ticket_id, vehicle, spot, entry and exit time, duration_hours()
-6. Payment -> FeeStrategy,
+6. SpotFactory -> prefix, make_spot()
+7. Payment -> FeeStrategy,
