@@ -115,7 +115,6 @@ class VehicleBasedFeeStrategy(FeeStrategy):
 class ParkingLot:
   def __init__(self):
         self.levels         = []
-        # Optional
         self.active_tickets = {}
         self.fee_strategy   = FlatRateFeeStrategy()
   
@@ -154,16 +153,16 @@ def main():
     lot1 = ParkingLot()
 
     # build levels and spots for lot1
-    spots1 = [ParkingSpot(101, VehicleType.CAR),
-              ParkingSpot(102, VehicleType.CAR),
-              ParkingSpot(103, VehicleType.BIKE),
-              ParkingSpot(104, VehicleType.TRUCK),]
+    spots1 = [ParkingSpot(str(uuid.uuid4()), VehicleType.CAR),
+              ParkingSpot(str(uuid.uuid4()), VehicleType.CAR),
+              ParkingSpot(str(uuid.uuid4()), VehicleType.BIKE),
+              ParkingSpot(str(uuid.uuid4()), VehicleType.TRUCK),]
     level1 = ParkingLevel(1, spots1)
     lot1.add_level(level1)
 
     # build levels and spots for lot1
-    spots2 = [ParkingSpot(201, VehicleType.TRUCK),
-              ParkingSpot(202, VehicleType.TRUCK)]
+    spots2 = [ParkingSpot(str(uuid.uuid4()), VehicleType.TRUCK),
+              ParkingSpot(str(uuid.uuid4()), VehicleType.TRUCK)]
     level2 = ParkingLevel(2, spots2)
     lot1.add_level(level2)
 
