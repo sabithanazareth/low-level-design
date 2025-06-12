@@ -1,5 +1,5 @@
 # 1. Vehicle -> license_plate - Enum VehicleType{Car, Bus, Bike} - get_type(), fee_rate()
-
+import itertools
 from enum import Enum
 import uuid
 import time
@@ -149,20 +149,30 @@ class ParkingLot:
             total = len(level.spots)
             print(f"Level {level.level_number} — {free}/{total} spots free")
 
+class SpotFactory:
+    def __init__(self, prefix="S"):
+        self._counter = itertools.count(1)
+        self.prefix   = prefix
+
+    def make_spot(self, vehicle_type):
+        spot_id = f"{self.prefix}{next(self._counter)}"
+        return ParkingSpot(spot_id, vehicle_type)
+
 def main():
     lot1 = ParkingLot()
-
+    factory = SpotFactory("L1-") 
     # build levels and spots for lot1
-    spots1 = [ParkingSpot(str(uuid.uuid4()), VehicleType.CAR),
-              ParkingSpot(str(uuid.uuid4()), VehicleType.CAR),
-              ParkingSpot(str(uuid.uuid4()), VehicleType.BIKE),
-              ParkingSpot(str(uuid.uuid4()), VehicleType.TRUCK),]
+    spots1 = [factory.make_spot(VehicleType.CAR),
+              factory.make_spot(VehicleType.CAR),
+              factory.make_spot(VehicleType.BIKE),
+              factory.make_spot(VehicleType.TRUCK)]
     level1 = ParkingLevel(1, spots1)
     lot1.add_level(level1)
 
     # build levels and spots for lot1
-    spots2 = [ParkingSpot(str(uuid.uuid4()), VehicleType.TRUCK),
-              ParkingSpot(str(uuid.uuid4()), VehicleType.TRUCK)]
+    factory = SpotFactory("L2-") 
+    spots2 = [factory.make_spot(VehicleType.TRUCK),
+              factory.make_spot(VehicleType.TRUCK)]
     level2 = ParkingLevel(2, spots2)
     lot1.add_level(level2)
 
@@ -173,7 +183,6 @@ def main():
 
     # park vehicles in lot1
     t1 = lot1.admit_vehicle(Car("CAR-AAA"))
-    print("T1", t1.spot.spot_number, t1.vehicle)
     t2 = lot1.admit_vehicle(Bike("BIKE-BBB"))
     t3 = lot1.admit_vehicle(Truck("TRUCK-CCC"))
     print("After admit:")
