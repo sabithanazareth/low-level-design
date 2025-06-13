@@ -158,7 +158,8 @@ class SpotFactory:
         spot_id = f"{self.prefix}{next(self._counter)}"
         return ParkingSpot(spot_id, vehicle_type)
 
-def main():
+class Parking:
+  def run():
     lot1 = ParkingLot()
     factory = SpotFactory("L1-") 
     # build levels and spots for lot1
@@ -194,4 +195,4 @@ def main():
     lot1.display_availability()
 
 if __name__ == "__main__":
-    main()
+    Parking.run()
