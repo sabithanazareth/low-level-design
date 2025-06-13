@@ -25,3 +25,8 @@ Identify Entities:
 5. Ticket -> ticket_id, vehicle, spot, entry and exit time, duration_hours()
 6. SpotFactory -> prefix, make_spot()
 7. Payment -> FeeStrategy,
+
+Patterns Used:
+
+1. Factory Pattern - make_spot() encapsulates the creation of ParkingSpot objects
+2. Strategy Pattern - FeeStrategy
