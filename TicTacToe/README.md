@@ -23,4 +23,4 @@ Identify Entities:
 1. Player - name, piece
 2. PieceType - mark, Piece(Enum)
 3. Board - n, board, spots_filled, mark(), get_board(), is_full(), has_winner()
-4. Game - board, player1 and 2, current_player, play(), switch_player
+4. Game - board, player1 and 2, current_player, play(), switch_player()
