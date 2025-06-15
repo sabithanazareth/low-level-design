@@ -9,14 +9,16 @@ Discuss basic workflow:
 5. Unpark and go to the exit gate
 6. Make the payment and exit
 
-Clarify requirements:
+Requirements:
 
-1. One parking lot?
-2. Are there levels in this parking lot or its just ground level?
-3. Do we need different spot size for different vehicles?
-4. Can I assume we have Car, Bus, Motorcycle for now?
+1. Multiple Floors: The parking lot can have multiple levels, each with its own set of spots.
+2. Parking Spots: Each level has parking spots typed for Cars, Trucks, or Bikes.
+3. Vehicle Types: Support for different vehicle types via a `VehicleType` enum and concrete `Vehicle` subclasses.
+4. Ticketing: Generate a unique ticket (with entry timestamp and spot info) when a vehicle parks.
+5. Unparking & Fee Calculation: On unpark, record exit time, compute duration (minimum 1 hour), and calculate fee via a configurable strategy.
+6. Spot Allocation: Always allocate the nearest (first-found) available spot matching the vehicle’s type.
 
-Identify Entities:
+Identify Entities and Class Design:
 
 1. Vehicle -> license_plate - Enum VehicleType{Car, Bus, Bike} - get_type(), fee_rate()
 2. Parking Lot -> levels, add_level(), admit_vehicle(), release_vehicle()

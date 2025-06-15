@@ -159,6 +159,7 @@ class SpotFactory:
         return ParkingSpot(spot_id, vehicle_type)
 
 class Parking:
+  @staticmethod
   def run():
     lot1 = ParkingLot()
     factory = SpotFactory("L1-") 
