@@ -17,18 +17,20 @@ class Elevator:
         self.condition = Condition(self.lock)
 
     def add_request(self, request):
-        with self.lock:
+        # adding a request safely…
+        with self.lock:  # 1) acquire the mutex
             if len(self.requests) < self.capacity:
                 self.requests.append(request)
                 print(
                     f"Elevator {self.id} added request: {request.source_floor} to {request.destination_floor}"
                 )
-                self.condition.notify_all()
+                self.condition.notify_all() # 2) wake any threads waiting for a request
+                # lock is re-acquired here, so it’s safe to consume the queue
 
     def get_next_request(self):
-        with self.lock:
+        with self.lock: # acquires the same lock
             while not self.requests:
-                self.condition.wait()
+                self.condition.wait() # release the lock & sleep until notify_all()
             return self.requests.pop(0)
 
     def process_requests(self):
