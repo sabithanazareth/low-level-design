@@ -1,6 +1,6 @@
 # Elevator system low-level-design
 
-Discuss basic workflow:
+Basic workflow:
 
 1. Building has floors and elevator
 2. User presses the direction and enters the elevator
