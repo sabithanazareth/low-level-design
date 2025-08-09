@@ -179,7 +179,7 @@ class Parking:
     lot1.add_level(level2)
 
     # switch fee strategy on lot1
-    lot1.set_fee_strategy(FlatRateFeeStrategy())
+    lot1.set_fee_strategy(VehicleBasedFeeStrategy())
     print("Lot1 availability:")
     lot1.display_availability()
 

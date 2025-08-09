@@ -22,11 +22,11 @@ Identify Entities and Class Design:
 
 1. Vehicle -> license_plate - Enum VehicleType{Car, Bus, Bike} - get_type(), fee_rate()
 2. Parking Lot -> levels, add_level(), admit_vehicle(), release_vehicle()
-3. Parking Level -> get_available_spot(), get_available_spots()
+3. Parking Level -> spots, get_available_spot(), get_available_spots()
 4. Parking Spot -> is_available(), park(), unpark()
 5. Ticket -> ticket_id, vehicle, spot, entry and exit time, duration_hours()
 6. SpotFactory -> prefix, make_spot()
-7. Payment -> FeeStrategy,
+7. Payment -> FeeStrategy
 
 Patterns Used:
 
