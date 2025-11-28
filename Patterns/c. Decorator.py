@@ -32,8 +32,8 @@ class PlainPizza(Pizza):
         return 5.00  # base price
 
 
-# ——— Decorator Base ———
-class PizzaDecorator(Pizza):
+# ——— Interface Decorator Base ———
+class PizzaDecorator(Pizza, ABC):
     def __init__(self, wrapped: Pizza):
         self._wrapped = wrapped
 

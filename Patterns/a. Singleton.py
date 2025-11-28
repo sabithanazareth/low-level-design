@@ -1,5 +1,6 @@
 
 # To ensure that a class has only one instance throughout the application’s lifecycle.
+
 class RentalSystem:
   _instance = None
   def __init__(self):
